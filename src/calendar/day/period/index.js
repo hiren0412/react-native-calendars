@@ -6,11 +6,11 @@ import {shouldUpdate} from '../../../component-updater';
 
 import * as defaultStyle from '../../../style';
 import styleConstructor from './style';
-
+import styleBasicConstructor from '../basic/style';
 
 class Day extends Component {
   static displayName = 'IGNORE';
-  
+
   static propTypes = {
     // TODO: selected + disabled props should be removed
     state: PropTypes.oneOf(['selected', 'disabled', 'today', '']),
@@ -25,10 +25,10 @@ class Day extends Component {
 
   constructor(props) {
     super(props);
-    
+
     this.theme = {...defaultStyle, ...(props.theme || {})};
     this.style = styleConstructor(props.theme);
-    
+    this.styleBasic = styleBasicConstructor(props.theme);
     this.markingStyle = this.getDrawingStyle(props.marking || []);
     this.onDayPress = this.onDayPress.bind(this);
     this.onDayLongPress = this.onDayLongPress.bind(this);
@@ -188,6 +188,35 @@ class Day extends Component {
         </View>
       );
     }
+
+      // newly added start
+      const dotStyle = [this.styleBasic.dot];
+
+      let marking = this.props.marking || {};
+      if (marking && marking.constructor === Array && marking.length) {
+          marking = {
+              marking: true
+          };
+      }
+      const isDisabled = typeof marking.disabled !== 'undefined' ? marking.disabled : this.props.state === 'disabled';
+      let dot;
+      if (marking.marked) {
+          dotStyle.push(this.styleBasic.visibleDot);
+          if (isDisabled) {
+              dotStyle.push(this.styleBasic.disabledDot);
+          }
+          if (marking.dotColor) {
+              dotStyle.push({backgroundColor: marking.dotColor});
+          }
+          dot = (<View style={dotStyle}/>);
+      }
+
+      if (marking.selected) {
+          dotStyle.push(this.styleBasic.selectedDot);
+      } else if (this.props.state === 'today') {
+          dotStyle.push(this.styleBasic.todayDot);
+      }
+      // newly added end
 
     return (
       <TouchableWithoutFeedback
