@@ -232,6 +232,7 @@ class Day extends Component {
           {fillers}
           <View style={containerStyle}>
             <Text allowFontScaling={false} style={textStyle}>{String(this.props.children)}</Text>
+              {dot}
           </View>
         </View>
       </TouchableWithoutFeedback>
