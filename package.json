@@ -5,14 +5,13 @@
   "description": "React Native Calendar Components",
   "scripts": {
     "test": "jasmine src/*.spec.js && npm run lint",
-    "lint": "eslint src/ example/src",
+    "lint": "eslint / example/src",
     "release": "node ./scripts/release.js",
     "start": "react-native start",
     "ios": "react-native run-ios",
     "android": "react-native run-android",
     "xcode": "open ios/CalendarsExample.xcworkspace/"
   },
-
   "license": "MIT",
   "dependencies": {
     "hoist-non-react-statics": "^3.3.1",
