@@ -12,10 +12,7 @@
     "android": "react-native run-android",
     "xcode": "open ios/CalendarsExample.xcworkspace/"
   },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
-  "author": "Wix.com",
+
   "license": "MIT",
   "dependencies": {
     "hoist-non-react-statics": "^3.3.1",
