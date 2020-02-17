@@ -12,10 +12,6 @@
     "android": "react-native run-android",
     "xcode": "open ios/CalendarsExample.xcworkspace/"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wix/react-native-calendars"
-  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
